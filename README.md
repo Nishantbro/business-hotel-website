@@ -1,6 +1,6 @@
 # 🏨 Business Hotel Website
 
-live demo - 
+live demo - https://business-hotel-website.vercel.app/
 
 A responsive **Business Hotel Website** built using **HTML, CSS, and JavaScript** as part of a Front-End Developer assignment.  
 The project focuses on clean UI, business-oriented design, and responsiveness across devices.
