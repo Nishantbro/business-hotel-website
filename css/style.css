@@ -6,19 +6,20 @@
 }
 
 :root {
-    --primary: #2c3e50;
-    --secondary: #3498db;
-    --accent: #e74c3c;
-    --gold: #f39c12;
-    --dark: #2c3e50;
-    --light: #7f8c8d;
-    --bg: #f8f9fa;
+    --primary: #b8860b; /* Golden yellow */
+    --secondary: #ffcc00; /* Bright yellow */
+    --accent: #e6b800; /* Darker yellow */
+    --gold: #ffd700; /* Gold */
+    --dark: #333333; /* Dark gray */
+    --light: #666666; /* Medium gray */
+    --bg: #fffaf0; /* Floral white */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
+    color: var(--dark);
+    background-color: var(--bg);
 }
 
 .container {
@@ -59,7 +60,7 @@ a {
     gap: 10px;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--dark);
 }
 
 .nav-logo {
@@ -78,7 +79,7 @@ a {
 }
 
 .nav-brand i {
-    color: #3498db;
+    color: var(--primary);
 }
 
 .nav-menu {
@@ -88,7 +89,7 @@ a {
 }
 
 .nav-menu a {
-    color: #2c3e50;
+    color: var(--dark);
     font-weight: 500;
     transition: color 0.2s;
     padding: 0.5rem 0;
@@ -102,7 +103,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: #3498db;
+    background: var(--primary);
     transition: width 0.25s ease-out;
 }
 
@@ -113,7 +114,7 @@ a {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: #3498db;
+    color: var(--primary);
 }
 
 .hamburger {
@@ -126,7 +127,7 @@ a {
 .hamburger span {
     width: 26px;
     height: 3px;
-    background: #2c3e50;
+    background: var(--dark);
     transition: all 0.3s;
     border-radius: 2px;
 }
@@ -196,14 +197,14 @@ a {
 }
 
 .btn-primary {
-    background: #3498db;
+    background: var(--primary);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #2980b9;
+    background: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 12px rgba(230, 184, 0, 0.3);
 }
 
 .btn-secondary {
@@ -240,7 +241,7 @@ a {
 .underline {
     width: 70px;
     height: 4px;
-    background: #3498db;
+    background: var(--primary);
     margin: 0 auto 1.2rem;
     border-radius: 2px;
 }
@@ -284,7 +285,7 @@ a {
 
 .stat h3 {
     font-size: 2.2rem;
-    color: #3498db;
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
@@ -333,7 +334,7 @@ a {
 .amenity-icon {
     width: 75px;
     height: 75px;
-    background: linear-gradient(120deg, #3498db, #667eea);
+    background: linear-gradient(120deg, var(--primary), var(--accent));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -405,7 +406,7 @@ a {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #f39c12;
+    background: var(--primary);
     color: white;
     padding: 6px 16px;
     border-radius: 20px;
@@ -443,7 +444,7 @@ a {
 }
 
 .room-features i {
-    color: #3498db;
+    color: var(--primary);
     margin-right: 6px;
 }
 
@@ -462,7 +463,7 @@ a {
 .room-price .price {
     font-size: 1.9rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--primary);
 }
 
 .room-price .period {
@@ -473,7 +474,7 @@ a {
 /* Page Header */
 .page-header {
     height: 350px;
-    background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(120deg, #383b47 0%, #090110 100%);
     position: relative;
     display: flex;
     align-items: center;
@@ -548,7 +549,7 @@ a {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #f39c12;
+    background: var(--primary);
     color: white;
     padding: 10px 22px;
     border-radius: 25px;
@@ -590,7 +591,7 @@ a {
 .room-price-large .price {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #3498db;
+    color: var(--primary);
     display: block;
 }
 
@@ -620,14 +621,14 @@ a {
 }
 
 .feature-item:hover {
-    background: #3498db;
+    background: var(--primary);
     color: white;
     transform: translateY(-3px);
 }
 
 .feature-item i {
     font-size: 1.5rem;
-    color: #3498db;
+    color: var(--primary);
     margin-bottom: 0.6rem;
     display: block;
 }
@@ -754,7 +755,7 @@ a {
 }
 
 .form-group label i {
-    color: #3498db;
+    color: var(--primary);
     margin-right: 6px;
 }
 
@@ -773,8 +774,8 @@ a {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
 }
 
 .form-group textarea {
@@ -858,7 +859,7 @@ a {
 .info-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(120deg, #3498db, #667eea);
+    background: linear-gradient(120deg, var(--primary), var(--accent));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -914,7 +915,7 @@ a {
 }
 
 .social-icon:hover {
-    background: #3498db;
+    background: var(--primary);
     color: white;
     transform: translateY(-3px);
 }
@@ -954,7 +955,7 @@ a {
 
 .map-info-item i {
     font-size: 2rem;
-    color: #3498db;
+    color: var(--primary);
     margin-bottom: 0.8rem;
 }
 
@@ -1010,7 +1011,7 @@ a {
 
 .footer-section i {
     margin-right: 8px;
-    color: #3498db;
+    color: var(--primary);
 }
 
 .footer-bottom {
