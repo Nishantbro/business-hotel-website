@@ -95,7 +95,8 @@ if (contactForm && formSuccess) {
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
+            message: document.getElementById('message').value,
+            timestamp: new Date().toLocaleString()
         };
 
         // Basic validation
@@ -111,8 +112,16 @@ if (contactForm && formSuccess) {
             return;
         }
 
-        // Simulate form submission (in real app, send to server)
-        console.log('Form Data Submitted:', formData);
+        // Save to localStorage
+        let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+        contacts.push({
+            ...formData,
+            id: Date.now()
+        });
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+
+        console.log('Contact saved:', formData);
+        console.log('All contacts:', contacts);
 
         // Show success message
         contactForm.style.display = 'none';
@@ -145,7 +154,21 @@ bookButtons.forEach(button => {
             }
         }
 
-        // Show booking confirmation (in real app, redirect to booking page)
+        // Save booking to localStorage
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        const booking = {
+            id: Date.now(),
+            room: roomName,
+            date: new Date().toLocaleString(),
+            status: 'New'
+        };
+        bookings.push(booking);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+
+        console.log('Booking saved:', booking);
+        console.log('All bookings:', bookings);
+
+        // Show booking confirmation
         showBookingModal(roomName);
     });
 });

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - LuxBiz Hotel</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="#" data-section="bookings"><i class="fas fa-calendar-alt"></i><span>Bookings</span></a></li>
+                    <li><a href="#" data-section="inquiries"><i class="fas fa-envelope"></i><span>Inquiries</span></a></li>
+                    <li><a href="#" data-section="rooms"><i class="fas fa-bed"></i><span>Rooms</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <!-- Overlay for mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <div class="admin-avatar">A</div>
+                        <span class="admin-name">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+
+                <!-- Dashboard Section -->
+                <section class="content-section active" id="dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon rooms"><i class="fas fa-bed"></i></div>
+                            <div class="stat-details">
+                                <h3>3</h3>
+                                <p>Total Rooms</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bookings"><i class="fas fa-calendar-check"></i></div>
+                            <div class="stat-details">
+                                <h3 id="totalBookings">0</h3>
+                                <p>Bookings</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon inquiries"><i class="fas fa-envelope"></i></div>
+                            <div class="stat-details">
+                                <h3 id="totalInquiries">0</h3>
+                                <p>Inquiries</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Quick Actions</h2>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="switchSection('bookings')"><i class="fas fa-calendar-alt"></i> View Bookings</button>
+                            <button class="action-btn" onclick="switchSection('inquiries')"><i class="fas fa-envelope"></i> View Inquiries</button>
+                            <button class="action-btn" onclick="switchSection('rooms')"><i class="fas fa-bed"></i> Manage Rooms</button>
+                            <a href="index.html" class="action-btn"><i class="fas fa-globe"></i> View Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Bookings Preview -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Recent Bookings</h2>
+                            <button class="card-link" onclick="switchSection('bookings')">View All</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentBookingsBody">
+                                    <tr><td colspan="3" class="empty-msg">No bookings yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bookings Section -->
+                <section class="content-section" id="bookings">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>All Bookings</h2>
+                            <button class="btn-danger-sm" onclick="clearAllBookings()"><i class="fas fa-trash"></i> Clear All</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsBody">
+                                    <tr><td colspan="4" class="empty-msg">No bookings yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inquiries Section -->
+                <section class="content-section" id="inquiries">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Contact Inquiries</h2>
+                            <button class="btn-danger-sm" onclick="clearAllContacts()"><i class="fas fa-trash"></i> Clear All</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactsBody">
+                                    <tr><td colspan="6" class="empty-msg">No inquiries yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rooms Section -->
+                <section class="content-section" id="rooms">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Room List</h2>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th>Capacity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Executive Suite</strong></td>
+                                        <td>Suite</td>
+                                        <td>₹4,999/night</td>
+                                        <td>2 Guests</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Business Deluxe</strong></td>
+                                        <td>Deluxe</td>
+                                        <td>₹3,499/night</td>
+                                        <td>2 Guests</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Corporate Standard</strong></td>
+                                        <td>Standard</td>
+                                        <td>₹2,499/night</td>
+                                        <td>1-2 Guests</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
